@@ -28,7 +28,6 @@ func (b *BigNumber) bitXor(a BigNumber) BigNumber {
 	// Створюємо результуюче число у Hex
 	resultHex := ""
 
-	// Проходимо по числам і використовуємо побітову операцію "OR"
 	for i := 0; i < len(hex1); i++ {
 		int1, _ := strconv.ParseInt(string(hex1[i]), 16, 0)
 		int2, _ := strconv.ParseInt(string(hex2[i]), 16, 0)
@@ -45,17 +44,13 @@ func XOR(bn1 *BigNumber, bn2 *BigNumber) *BigNumber {
 	var result2 BigNumber
 	h1 := bn1.getHex()
 	h2 := bn2.getHex()
-	// convert the hex strings to ints
+
 	num1, _ := strconv.ParseInt(h1, 16, 64)
 	num2, _ := strconv.ParseInt(h2, 16, 64)
 
-	// perform bitwise OR
 	res := num1 ^ num2
 
-	// convert the result2 to a hex string
 	hres := fmt.Sprintf("%x", res)
-
-	// set the hex value of the result
 	result2.setHex(hres)
 	return &result2
 }
@@ -65,10 +60,10 @@ func (b *BigNumber) bitAnd(a BigNumber) BigNumber {
 	// Отримаємо два числа у Hex
 	hex1 := b.getHex()
 	hex2 := a.getHex()
+
 	// Створюємо результуюче число у Hex
 	resultHex := ""
 
-	// Проходимо по числам і використовуємо побітову операцію "І"
 	for i := 0; i < len(hex1); i++ {
 		int1, _ := strconv.ParseInt(string(hex1[i]), 16, 0)
 		int2, _ := strconv.ParseInt(string(hex2[i]), 16, 0)
@@ -86,17 +81,11 @@ func AND(bn1 *BigNumber, bn2 *BigNumber) *BigNumber {
 	h1 := bn1.getHex()
 	h2 := bn2.getHex()
 
-	// convert the hex strings to ints
 	num1, _ := strconv.ParseInt(h1, 16, 64)
 	num2, _ := strconv.ParseInt(h2, 16, 64)
 
-	// perform bitwise I
 	res := num1 & num2
-
-	// convert the result to a hex string
 	hres := fmt.Sprintf("%x", res)
-
-	// set the hex value of the result
 	result.setHex(hres)
 	return &result
 }
@@ -126,17 +115,10 @@ func OR(bn1 *BigNumber, bn2 *BigNumber) *BigNumber {
 	var result1 BigNumber
 	h1 := bn1.getHex()
 	h2 := bn2.getHex()
-	// convert the hex strings to ints
 	num1, _ := strconv.ParseInt(h1, 16, 64)
 	num2, _ := strconv.ParseInt(h2, 16, 64)
-
-	// perform bitwise OR
 	res := num1 | num2
-
-	// convert the result1 to a hex string
 	hres := fmt.Sprintf("%x", res)
-
-	// set the hex value of the result
 	result1.setHex(hres)
 	return &result1
 }
@@ -155,14 +137,15 @@ func main() {
 	fmt.Println("b1: ", b1)
 	fmt.Println("b2: ", b2)
 
-	fmt.Println("XOR: ", result2.getHex()) // Output: FFCD
+	fmt.Println("XOR: ", result2.getHex())
 
 	// Виконуємо для них побітову операцію "I"
 	var result = b1.bitAnd(b2)
 	fmt.Println("\nb1: ", b1)
 	fmt.Println("b2: ", b2)
+
 	// Виводимо результат
-	fmt.Println("I:   ", result.getHex()) // Output: FFCD
+	fmt.Println("I:   ", result.getHex())
 
 	fmt.Println("\nb1: ", b1)
 	fmt.Println("b2: ", b2)
@@ -170,6 +153,6 @@ func main() {
 	var result1 = b1.bitOr(b2)
 
 	// Виводимо результат
-	fmt.Println("OR:  ", result1.getHex()) // Output: FFCD
+	fmt.Println("OR:  ", result1.getHex())
 
 }
